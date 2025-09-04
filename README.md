@@ -25,38 +25,6 @@ model mistral:latest
 - [x]  Github
 </aside>
 
-# Attention
-
-## Problème lié au prompt
-
-ex: 
-
-```
-    dateAPI = (
-        "Extrait du PV ou mail :\n\n" +
-        text +
-        "\n\nDonne moi la date de la séance de ce pv ou mail"
-        "Réponds uniquement avec la date au format YYYY-MM-DD." 
-    )
-```
-
-Donne une date même si il n’y a pas de date
-
-Solution, mais à vérifier 
-
-```bash
-    dateAPI = (
-        "Extrait du PV ou mail :\n\n" +
-        text +
-        "\n\nDonne moi la date de la séance de ce pv ou mail"
-        "Réponds uniquement avec la date au format YYYY-MM-DD."
-        "Si tu ne trouves pas de date tu réponds uniquement /Erreur/" 
-    )
-```
-
-<img width="1083" height="914" alt="image" src="https://github.com/user-attachments/assets/292cd8da-5259-411d-993a-df30eef7b427" />
-
-
 # Objectif
 
 <aside>
@@ -91,3 +59,34 @@ PDF
 Date première page
 
 Pas scanne
+
+# Attention
+
+## Problème lié au prompt
+
+ex: 
+
+```
+    dateAPI = (
+        "Extrait du PV ou mail :\n\n" +
+        text +
+        "\n\nDonne moi la date de la séance de ce pv ou mail"
+        "Réponds uniquement avec la date au format YYYY-MM-DD." 
+    )
+```
+
+Donne une date même si il n’y a pas de date
+
+Solution, mais à vérifier 
+
+```bash
+    dateAPI = (
+        "Extrait du PV ou mail :\n\n" +
+        text +
+        "\n\nDonne moi la date de la séance de ce pv ou mail"
+        "Réponds uniquement avec la date au format YYYY-MM-DD."
+        "Si tu ne trouves pas de date tu réponds uniquement /Erreur/" 
+    )
+```
+
+<img width="1083" height="914" alt="image" src="https://github.com/user-attachments/assets/292cd8da-5259-411d-993a-df30eef7b427" />
