@@ -56,8 +56,6 @@ Etapes
 
 PDF
 
-Date première page
-
 Pas scanne
 
 # Attention
