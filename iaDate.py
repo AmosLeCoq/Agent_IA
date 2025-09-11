@@ -30,13 +30,6 @@ result = subprocess.run(
     text=True
 )
 
-# Compte le nombre de ficher
-items = json.loads(result.stdout)
-if isinstance(items, dict):
-    count = 1
-else:
-    count = len(items)
-
 #Création du nouveau dossier
 path2 = os.path.dirname(path)
 path2 = path2+"V2"
@@ -92,10 +85,19 @@ def requeteAPI(textAPI, modelAPI):
       os.system("pause")
       sys.exit()
 
-#On charge le JSON en tableau Python
-files = json.loads(result.stdout)
-loop=2
-loopErreur=1
+# Charger le JSON (un fichier = dict, plusieurs fichiers = list)
+items = json.loads(result.stdout)
+
+if isinstance(items, dict):
+    files = [items]   # un seul fichier -> on met dans une liste
+    count = 1
+else:
+    files = items     # plusieurs fichiers -> déjà une liste
+    count = len(items)
+
+loop = 2
+loopErreur = 1
+
 
 for f in tqdm(files, desc="Traitement des fichiers"):
     
@@ -111,7 +113,7 @@ for f in tqdm(files, desc="Traitement des fichiers"):
     while not re.search(r"(\d{1,2} \w{4,9} \d{4}|\d{1,2}[- \.]{1}\d{1,2}[- \.]{1}\d{4})", text) and nbPage >= t:
       text=doc[t-1].get_text()
       t=t+1
-    print(text)
+    # print(text)
       
     #Extraire le pdf entier
     text2 = ""
